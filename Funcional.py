@@ -65,7 +65,7 @@ def cargar_preguntas_func(archivo="problems.yaml"):
     ]
     
     try:
-        with open(archivo, "r") as f:
+        with open(archivo, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
             if data is None:
                 data = []
@@ -74,10 +74,10 @@ def cargar_preguntas_func(archivo="problems.yaml"):
     
     data.extend(preguntas)
     
-    with open(archivo, "w") as f:
+    with open(archivo, "w", encoding="utf-8") as f:
         yaml.dump(data, f, allow_unicode=True)
     
     print(f"✅ Se cargaron {len(preguntas)} preguntas funcionales en {archivo}")
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     cargar_preguntas_func()

@@ -1,7 +1,7 @@
 ﻿import yaml
 
 class Pregunta:
-    def _init_(self, title, prompt, hints, tags):
+    def __init__(self, title, prompt, hints, tags):
         self.title = title
         self.prompt = prompt
         self.hints = hints
@@ -30,7 +30,7 @@ def cargar_preguntas_poo(archivo="problems.yaml"):
     ]
 
     try:
-        with open(archivo, "r") as f:
+        with open(archivo, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
             if data is None:
                 data = []
@@ -40,10 +40,10 @@ def cargar_preguntas_poo(archivo="problems.yaml"):
     for p in preguntas_iniciales:
         data.append(p.to_dict())
 
-    with open(archivo, "w") as f:
+    with open(archivo, "w", encoding="utf-8") as f:
         yaml.dump(data, f, allow_unicode=True)
 
     print(f"✅ Se cargaron {len(preguntas_iniciales)} preguntas en {archivo}")
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     cargar_preguntas_poo()
