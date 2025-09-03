@@ -1,10 +1,10 @@
-import yaml
+﻿import yaml
 
-def generar_preguntas():
-    return [
+def cargar_preguntas_func(archivo="problems.yaml"):
+    preguntas = [
         {
             "title": "Función pura suma",
-            "prompt": "Escribe una función pura `suma(a, b)` que devuelva a + b.",
+            "prompt": "Escribe una función pura suma(a, b) que devuelva a + b.",
             "hints": ["No uses variables globales", "Devuelve el resultado directamente"],
             "tags": ["funciones", "aritmética"]
         },
@@ -63,10 +63,7 @@ def generar_preguntas():
             "tags": ["funciones", "diccionarios"]
         },
     ]
-
-def cargar_preguntas(archivo="problems.yaml"):
-    preguntas = generar_preguntas()
-
+    
     try:
         with open(archivo, "r") as f:
             data = yaml.safe_load(f)
@@ -74,13 +71,13 @@ def cargar_preguntas(archivo="problems.yaml"):
                 data = []
     except FileNotFoundError:
         data = []
-
+    
     data.extend(preguntas)
-
+    
     with open(archivo, "w") as f:
         yaml.dump(data, f, allow_unicode=True)
+    
+    print(f"✅ Se cargaron {len(preguntas)} preguntas funcionales en {archivo}")
 
-    print(f"✅ Se cargaron {len(preguntas)} preguntas en {archivo}")
-
-if __name__ == "__main__":
-    cargar_preguntas()
+if __name__ == "_main_":
+    cargar_preguntas_func()
