@@ -14,7 +14,7 @@ try:
     from POO import cargar_preguntas_poo
     from Funcional import cargar_preguntas_func
 except ImportError:
-    print("⚠️  Los módulos POO y Funcional no están disponibles")
+    print("Los módulos POO y Funcional no están disponibles")
     cargar_preguntas_poo = None
     cargar_preguntas_func = None
 
@@ -23,21 +23,21 @@ def cargar_preguntas():
     if cargar_preguntas_poo:
         cargar_preguntas_poo()
     else:
-        print("❌ Función POO no disponible")
+        print("Función POO no disponible")
     
     if cargar_preguntas_func:
         cargar_preguntas_func()
     else:
-        print("❌ Función Funcional no disponible")
+        print("Función Funcional no disponible")
 
 def main():
     """Función principal del bot"""
-    print("🤖 Bot de retos de programación")
-    print("📝 Cargando preguntas...")
+    print("Bot de retos de programación")
+    print("Cargando preguntas...")
     
     cargar_preguntas()
-    print("✅ Proceso completado")
+    print("Proceso completado")
 
-if  __name__== "_main_":
+if  __name__== "__main__":
     main()
 
